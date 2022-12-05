@@ -1329,24 +1329,24 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void main_Update_m8A9D6818CB69459A554B6823132
 		float L_7;
 		L_7 = Vector2_Distance_mBACBB1609E1894D68F882D86A93519E311810C89_inline(L_5, L_6, NULL);
 		V_0 = L_7;
+		// touchPosition = pinchPosition1;
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_8 = __this->___pinchPosition1_12;
+		__this->___touchPosition_9 = L_8;
 		// if (distance == default)
-		float L_8 = __this->___distance_14;
-		if ((!(((float)L_8) == ((float)(0.0f)))))
+		float L_9 = __this->___distance_14;
+		if ((!(((float)L_9) == ((float)(0.0f)))))
 		{
-			goto IL_0059;
+			goto IL_0065;
 		}
 	}
 	{
 		// distance = newDistance;
-		float L_9 = V_0;
-		__this->___distance_14 = L_9;
+		float L_10 = V_0;
+		__this->___distance_14 = L_10;
 	}
 
-IL_0059:
+IL_0065:
 	{
-		// touchPosition = pinchPosition1;
-		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_10 = __this->___pinchPosition1_12;
-		__this->___touchPosition_9 = L_10;
 		// Ray ray = arCamera.ScreenPointToRay(pinchPosition1);
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_11 = __this->___arCamera_6;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_12 = __this->___pinchPosition1_12;
@@ -1364,7 +1364,7 @@ IL_0059:
 		}
 	}
 	{
-		// if (distance > newDistance)
+		// if (distance > newDistance) // newDistance lower decrease size
 		float L_16 = __this->___distance_14;
 		float L_17 = V_0;
 		if ((!(((float)L_16) > ((float)L_17))))
@@ -1395,7 +1395,7 @@ IL_0059:
 
 IL_00e2:
 	{
-		// else if (distance < newDistance)
+		// else if (distance < newDistance) // newDistance higher increase size
 		float L_27 = __this->___distance_14;
 		float L_28 = V_0;
 		if ((!(((float)L_27) < ((float)L_28))))
@@ -1484,7 +1484,7 @@ IL_0143:
 		VideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3* L_49;
 		L_49 = Component_GetComponent_TisVideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3_m19D8A3EC4A0BF3BDAFCF718B25FC119EFE6F6BBA(L_48, Component_GetComponent_TisVideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3_m19D8A3EC4A0BF3BDAFCF718B25FC119EFE6F6BBA_RuntimeMethod_var);
 		V_5 = L_49;
-		// if (videoObject != null)
+		// if (videoObject != null) // This should be a redundant check
 		VideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3* L_50 = V_5;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_51;
