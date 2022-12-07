@@ -136,7 +136,7 @@ public class main : MonoBehaviour
             UpdateARImage(trackedImage);
         }
 
-        // Should deactivate & stop video of corresponding object but eventArgs.removed doesn't seem te be called.
+        // Should deactivate & stop video of corresponding object but eventArgs.removed doesn't seem to be called.
         foreach (ARTrackedImage trackedImage in eventArgs.removed)
         {
             arObjects[trackedImage.name].SetActive(false);
@@ -170,7 +170,7 @@ public class main : MonoBehaviour
         }
         catch (Exception e)
         {
-            //TODO proper exeption handling
+            //TODO proper exception handling ?
             Debug.Log(e);
         }
     }
