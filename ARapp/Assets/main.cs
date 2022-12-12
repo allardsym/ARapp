@@ -70,13 +70,11 @@ public class main : MonoBehaviour
             {
                 if (distance > newDistance) // newDistance lower decrease size
                 {
-                    scaleFactor = new Vector3((scaleFactor.x * (float)0.95), (scaleFactor.y * (float)0.95), (scaleFactor.z * (float)0.95));
-                    hitObject.transform.localScale = scaleFactor;
-                } 
+                    hitObject.transform.localScale = new Vector3((hitObject.transform.localScale.x * (float)0.95), (hitObject.transform.localScale.y * (float)0.95), (hitObject.transform.localScale.z * (float)0.95));
+                }
                 else if (distance < newDistance) // newDistance higher increase size
                 {
-                    scaleFactor = new Vector3((scaleFactor.x * (float)1.05), (scaleFactor.y * (float)1.05), (scaleFactor.z * (float)1.05));
-                    hitObject.transform.localScale = scaleFactor;
+                    hitObject.transform.localScale = new Vector3((hitObject.transform.localScale.x * (float)1.05), (hitObject.transform.localScale.y * (float)1.05), (hitObject.transform.localScale.z * (float)1.05));
                 }
             }
 
