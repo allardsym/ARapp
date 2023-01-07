@@ -83,32 +83,48 @@ public class main : MonoBehaviour
         else if (Input.touchCount == 1)
         {
             // Get position of touch input
-            Touch touch = Input.GetTouch(0);
-            touchPosition = touch.position;
+            Touch newTouch = Input.GetTouch(0);
+            Vector2 newTouchPosition = newTouch.position;
 
-            // TouchPhase.Ended to pause only after release
-            if (touch.phase == TouchPhase.Ended)
+            VideoPlayer videoObject = null;
+
+            // Raycast & check for object hit
+            Ray ray = arCamera.ScreenPointToRay(newTouch.position);
+            RaycastHit hitObject;
+            if (Physics.Raycast(ray, out hitObject))
             {
-                // Raycast & check for object hit
-                Ray ray = arCamera.ScreenPointToRay(touch.position);
-                RaycastHit hitObject;
-                if (Physics.Raycast(ray, out hitObject))
+                // Get videoplayer object and pause or play video
+                videoObject = hitObject.transform.GetComponent<VideoPlayer>();
+
+                if (videoObject != null) // This should be a redundant check
                 {
-                    // Get videoplayer object and pause or play video
-                    VideoPlayer videoObject = hitObject.transform.GetComponent<VideoPlayer>();
-                    if (videoObject != null) // This should be a redundant check
+                    if (touchPosition.x > newTouchPosition.x) // newDistance lower decrease size
                     {
-                        if (videoObject.isPaused)
-                        {
-                            videoObject.Play();
-                        }
-                        else
-                        {
-                            videoObject.Pause();
-                        }
+                        videoObject.frame = (videoObject.frame - 20);
+                    }
+                    else if (touchPosition.x < newTouchPosition.x) // newDistance higher increase size
+                    {
+                        videoObject.frame = (videoObject.frame + 20);
                     }
                 }
             }
+
+            // TouchPhase.Ended to pause only after release
+            if (newTouch.phase == TouchPhase.Ended)
+            {
+                if (videoObject != null) // This should be a redundant check
+                {
+                    if (videoObject.isPaused)
+                    {
+                        videoObject.Play();
+                    }
+                    else
+                    {
+                        videoObject.Pause();
+                    }
+                }
+            }
+            touchPosition = newTouchPosition;
         }
     }
 
